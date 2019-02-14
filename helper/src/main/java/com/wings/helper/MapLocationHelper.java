@@ -6,17 +6,20 @@ import android.net.Uri;
 
 /**
  * Purpose: Open location with map using latitude, longitude and address.
+ *
  * @author NikunjD
  * Created on February 13, 2019
- * Modified on February 13, 2019
+ * Modified on February 14, 2019
  */
 public class MapLocationHelper {
 
     /**
-     * @param context **Apply context to launch Map
-     * @param latitude **Apply latitude as a double
-     * @param longitude **Apply longitude as a double
-     * @param address **Apply address of location
+     * Open View to show latitude and longitude
+     *
+     * @param context   - Context to launch Map
+     * @param latitude  - Latitude as a double
+     * @param longitude - Longitude as a double
+     * @param address   - Address of location
      */
     public static void openMapLocation(Context context, double latitude, double longitude, String address) {
         String uriBegin = "geo:" + latitude + "," + longitude;

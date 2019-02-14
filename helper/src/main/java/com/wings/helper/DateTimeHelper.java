@@ -6,7 +6,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 import java.util.TimeZone;
 
 /**
@@ -14,27 +13,36 @@ import java.util.TimeZone;
  *
  * @author NikunjD
  * Created on February 13, 2019
- * Modified on February 13, 2019
+ * Modified on February 14, 2019
  */
 public class DateTimeHelper {
 
 
     /**
-     * @param format **Apply date format
-     * @return current date as per date format
+     * Get current date and time
+     *
+     * @param format - Format of date
+     * @return value - current date as per date format
      */
     public static String getCurrentDateTime(String format) {
         return DateFormat.format(format, new Date()).toString();
     }
 
+    /**
+     * Get current time in millisecond
+     *
+     * @return value - current time in millisecond
+     */
     public static long getSystemCurrentTimeInMills() {
         return System.currentTimeMillis();
     }
 
     /**
-     * @param inputDate  **Apply date as a string
-     * @param dateFormat **Apply date format as per input date
-     * @return millisecond
+     * Get time in millisecond
+     *
+     * @param inputDate  - Input date as a string
+     * @param dateFormat - Default date format as per input date
+     * @return value - millisecond from date
      */
     public static long getMilliSecondFromDate(String inputDate, String dateFormat) {
         long millis = 0;
@@ -50,10 +58,12 @@ public class DateTimeHelper {
     }
 
     /**
-     * @param inputDate **Apply input date string
-     * @param inputDateFormat **Input date format (UTC date format)
-     * @param outputDateFormat **Output date format (local date format)
-     * @return local date and time from UTC
+     * Convert date and time from UTC timezone to local timezone
+     *
+     * @param inputDate        - Input date string
+     * @param inputDateFormat  - Input date format (UTC date format)
+     * @param outputDateFormat - Output date format (local date format)
+     * @return value - local date and time from UTC
      */
     public static String convertDateTimeUTCToLocal(String inputDate, String inputDateFormat, String outputDateFormat) {
         String localDate = "";
@@ -72,10 +82,12 @@ public class DateTimeHelper {
     }
 
     /**
-     * @param dateTime **Apply date and time as a String
-     * @param inputPattern **Input date format
-     * @param outputPattern **Output date format
-     * @return formatted date
+     * Convert Date format
+     *
+     * @param dateTime      - Date and time as a string
+     * @param inputPattern  - Input date format
+     * @param outputPattern - Output date format
+     * @return value - formatted date
      */
     public static String changeDateFormat(String dateTime, String inputPattern, String outputPattern) {
         SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
@@ -93,9 +105,11 @@ public class DateTimeHelper {
 
 
     /**
-     * @param milliSeconds **millisecond in long
-     * @param dateFormat **Apply require date format
-     * @return date from millisecond with specific pattern
+     * Convert millisecond date
+     *
+     * @param milliSeconds - Millisecond in long
+     * @param dateFormat   - Date format
+     * @return value - date from millisecond with specific pattern
      */
     public static String changeMilliSecondToDateFormat(long milliSeconds, String dateFormat) {
         SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
