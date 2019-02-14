@@ -33,7 +33,7 @@ public class FontHelper {
     /**
      * Set typeface
      *
-     * @param typeface - Typeface
+     * @param typeface Font Typeface
      */
     public FontHelper(Typeface typeface) {
         this.typeface = typeface;
@@ -42,8 +42,8 @@ public class FontHelper {
     /**
      * Get typeface from asset and file name
      *
-     * @param assets             - Assets
-     * @param assetsFontFileName - Asset font file name (Fonts link of assets)
+     * @param assets             Assets
+     * @param assetsFontFileName Asset font file name (Fonts link of assets)
      */
     public FontHelper(AssetManager assets, String assetsFontFileName) {
         typeface = Typeface.createFromAsset(assets, assetsFontFileName);
@@ -52,7 +52,7 @@ public class FontHelper {
     /**
      * Replace font in every child as provided typeface
      *
-     * @param viewTree - ViewGroup
+     * @param viewTree ViewGroup
      */
     public void replaceFonts(ViewGroup viewTree) {
         View child;

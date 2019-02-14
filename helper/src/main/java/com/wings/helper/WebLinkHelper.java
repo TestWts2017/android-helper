@@ -16,8 +16,8 @@ public class WebLinkHelper {
     /**
      * Open web link as a string using browser
      *
-     * @param context - Context to start browser activity
-     * @param webLink - Website Link as a string to open in browser
+     * @param context Context to start browser activity
+     * @param webLink Website Link as a string to open in browser
      */
     public static void openWebsiteUsingBrowser(Context context, String webLink) {
         Uri uriUrl = Uri.parse(webLink);
@@ -28,8 +28,8 @@ public class WebLinkHelper {
     /**
      * Open web link as a uri using browser
      *
-     * @param context - Context to start browser activity
-     * @param webLink - Website Link as a uri to open in browser
+     * @param context Context to start browser activity
+     * @param webLink Website Link as a uri to open in browser
      */
     public static void openWebsiteUsingBrowser(Context context, Uri webLink) {
         Intent launchBrowser = new Intent(Intent.ACTION_VIEW, webLink);

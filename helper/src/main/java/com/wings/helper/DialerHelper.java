@@ -16,8 +16,8 @@ public class DialerHelper {
     /**
      * Open Dialer screen with phone number
      *
-     * @param context - Context to open dialer
-     * @param phoneNo - Phone number which directly appear in dialer screen
+     * @param context Context to open dialer
+     * @param phoneNo Phone number which directly appear in dialer screen
      */
     public static void openDialer(Context context, String phoneNo) {
         Intent intent = new Intent(Intent.ACTION_DIAL);

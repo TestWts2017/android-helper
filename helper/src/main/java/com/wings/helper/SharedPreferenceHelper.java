@@ -23,7 +23,7 @@ public class SharedPreferenceHelper {
     /**
      * Default shared preference
      *
-     * @param context - Context for default shared preference
+     * @param context Context for default shared preference
      */
     public SharedPreferenceHelper(Context context) {
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -33,9 +33,9 @@ public class SharedPreferenceHelper {
     /**
      * Shared preference as per name and preference mode
      *
-     * @param context - Context for get shared preference
-     * @param name    - Name of shared preference
-     * @param mode    - Mode of shared preference
+     * @param context Context for get shared preference
+     * @param name    Name of shared preference
+     * @param mode    Mode of shared preference
      */
     public SharedPreferenceHelper(Context context, String name, int mode) {
         preferences = context.getSharedPreferences(name, mode);
@@ -45,7 +45,7 @@ public class SharedPreferenceHelper {
     /**
      * Default Builder
      *
-     * @param context - Context for get shared preference
+     * @param context Context for get shared preference
      * @return SharedPreferenceHelper - Shared preference helper object
      */
     public static SharedPreferenceHelper with(Context context) {
@@ -58,9 +58,9 @@ public class SharedPreferenceHelper {
     /**
      * Builder with name and preference mode
      *
-     * @param context - Context for get shared preference
-     * @param name    - Name of shared preference
-     * @param mode    - Mode of shared preference
+     * @param context Context for get shared preference
+     * @param name    Name of shared preference
+     * @param mode    Mode of shared preference
      * @return SharedPreferenceHelper - Shared preference helper object
      */
     public static SharedPreferenceHelper with(Context context, String name, int mode) {
@@ -73,8 +73,8 @@ public class SharedPreferenceHelper {
     /**
      * Save a boolean shared preference
      *
-     * @param key   - Key to set shared preference
-     * @param value - Value for the key
+     * @param key   Key to set shared preference
+     * @param value Value for the key
      */
     public void save(String key, boolean value) {
         editor.putBoolean(key, value).apply();
@@ -83,8 +83,8 @@ public class SharedPreferenceHelper {
     /**
      * Save a string shared preference
      *
-     * @param key   - Key to set shared preference
-     * @param value - Value for the key
+     * @param key   Key to set shared preference
+     * @param value Value for the key
      */
     public void save(String key, String value) {
         editor.putString(key, value).apply();
@@ -93,8 +93,8 @@ public class SharedPreferenceHelper {
     /**
      * Save a integer shared preference
      *
-     * @param key   - Key to set shared preference
-     * @param value - Value for the key
+     * @param key   Key to set shared preference
+     * @param value Value for the key
      */
     public void save(String key, int value) {
         editor.putInt(key, value).apply();
@@ -103,8 +103,8 @@ public class SharedPreferenceHelper {
     /**
      * Save a float shared preference
      *
-     * @param key   - Key to set shared preference
-     * @param value - Value for the key
+     * @param key   Key to set shared preference
+     * @param value Value for the key
      */
     public void save(String key, float value) {
         editor.putFloat(key, value).apply();
@@ -113,8 +113,8 @@ public class SharedPreferenceHelper {
     /**
      * Save a long shared preference
      *
-     * @param key   - Key to set shared preference
-     * @param value - Value for the key
+     * @param key   Key to set shared preference
+     * @param value Value for the key
      */
     public void save(String key, long value) {
         editor.putLong(key, value).apply();
@@ -123,8 +123,8 @@ public class SharedPreferenceHelper {
     /**
      * Save a set of string shared preference
      *
-     * @param key   - Key to set shared preference
-     * @param value - Value for the key
+     * @param key   Key to set shared preference
+     * @param value Value for the key
      */
     public void save(String key, Set<String> value) {
         editor.putStringSet(key, value).apply();
@@ -133,8 +133,8 @@ public class SharedPreferenceHelper {
     /**
      * Get a boolean shared preference
      *
-     * @param key      - Key to look up in shared preferences.
-     * @param defValue - Default value to be returned if shared preference isn't found.
+     * @param key      Key to look up in shared preferences.
+     * @param defValue Default value to be returned if shared preference isn't found.
      * @return value - String containing value of the shared preference if found.
      */
     public boolean getBoolean(String key, boolean defValue) {
@@ -144,8 +144,8 @@ public class SharedPreferenceHelper {
     /**
      * Get a string shared preference
      *
-     * @param key      - Key to look up in shared preferences.
-     * @param defValue - Default value to be returned if shared preference isn't found.
+     * @param key      Key to look up in shared preferences.
+     * @param defValue Default value to be returned if shared preference isn't found.
      * @return value - String containing value of the shared preference if found.
      */
     public String getString(String key, String defValue) {
@@ -155,8 +155,8 @@ public class SharedPreferenceHelper {
     /**
      * Get a integer shared preference
      *
-     * @param key      - Key to look up in shared preferences.
-     * @param defValue - Default value to be returned if shared preference isn't found.
+     * @param key      Key to look up in shared preferences.
+     * @param defValue Default value to be returned if shared preference isn't found.
      * @return value - String containing value of the shared preference if found.
      */
     public int getInt(String key, int defValue) {
@@ -166,8 +166,8 @@ public class SharedPreferenceHelper {
     /**
      * Get a float shared preference
      *
-     * @param key      - Key to look up in shared preferences.
-     * @param defValue - Default value to be returned if shared preference isn't found.
+     * @param key      Key to look up in shared preferences.
+     * @param defValue Default value to be returned if shared preference isn't found.
      * @return value - String containing value of the shared preference if found.
      */
     public float getFloat(String key, float defValue) {
@@ -177,8 +177,8 @@ public class SharedPreferenceHelper {
     /**
      * Get a long shared preference
      *
-     * @param key      - Key to look up in shared preferences.
-     * @param defValue - Default value to be returned if shared preference isn't found.
+     * @param key      Key to look up in shared preferences.
+     * @param defValue Default value to be returned if shared preference isn't found.
      * @return value - String containing value of the shared preference if found.
      */
     public long getLong(String key, long defValue) {
@@ -188,8 +188,8 @@ public class SharedPreferenceHelper {
     /**
      * Get a set of string shared preference
      *
-     * @param key      - Key to look up in shared preferences.
-     * @param defValue - Default value to be returned if shared preference isn't found.
+     * @param key      Key to look up in shared preferences.
+     * @param defValue Default value to be returned if shared preference isn't found.
      * @return value - String containing value of the shared preference if found.
      */
     public Set<String> getStringSet(String key, Set<String> defValue) {
@@ -208,7 +208,7 @@ public class SharedPreferenceHelper {
     /**
      * Remove from shared preference
      *
-     * @param key - Key to remove from shared preference
+     * @param key Key to remove from shared preference
      */
     public void remove(String key) {
         editor.remove(key).apply();
@@ -224,7 +224,7 @@ public class SharedPreferenceHelper {
     /**
      * Check whether key is available in shared preference
      *
-     * @param key - Key to look up in shared preference
+     * @param key Key to look up in shared preference
      * @return value - Value as a boolean (true or false)
      */
     public boolean contains(String key) {
@@ -240,9 +240,9 @@ public class SharedPreferenceHelper {
         /**
          * Builder class constructor
          *
-         * @param context - Context for shared preference
-         * @param name    - Name of shared preference
-         * @param mode    - Mode of shared preference
+         * @param context Context for shared preference
+         * @param name    Name of shared preference
+         * @param mode    Mode of shared preference
          */
         public Builder(Context context, String name, int mode) {
             if (context == null) {

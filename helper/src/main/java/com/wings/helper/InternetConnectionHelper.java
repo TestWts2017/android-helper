@@ -16,7 +16,7 @@ public class InternetConnectionHelper {
     /**
      * Check for internet is connected or not
      *
-     * @param context - Context for connectivity service
+     * @param context Context for connectivity service
      * @return value - Value as boolean (true or false)
      */
     public static boolean isConnected(Context context) {
@@ -31,7 +31,7 @@ public class InternetConnectionHelper {
     /**
      * Check for internet is connected or connecting
      *
-     * @param context - Context for connectivity service
+     * @param context Context for connectivity service
      * @return value - Value as boolean (true or false)
      */
     public static boolean isConnectedOrConnecting(Context context) {

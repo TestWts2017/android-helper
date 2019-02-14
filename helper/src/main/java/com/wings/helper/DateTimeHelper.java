@@ -21,7 +21,7 @@ public class DateTimeHelper {
     /**
      * Get current date and time
      *
-     * @param format - Format of date
+     * @param format Format of date
      * @return value - current date as per date format
      */
     public static String getCurrentDateTime(String format) {
@@ -40,8 +40,8 @@ public class DateTimeHelper {
     /**
      * Get time in millisecond
      *
-     * @param inputDate  - Input date as a string
-     * @param dateFormat - Default date format as per input date
+     * @param inputDate  Input date as a string
+     * @param dateFormat Default date format as per input date
      * @return value - millisecond from date
      */
     public static long getMilliSecondFromDate(String inputDate, String dateFormat) {
@@ -60,9 +60,9 @@ public class DateTimeHelper {
     /**
      * Convert date and time from UTC timezone to local timezone
      *
-     * @param inputDate        - Input date string
-     * @param inputDateFormat  - Input date format (UTC date format)
-     * @param outputDateFormat - Output date format (local date format)
+     * @param inputDate        Input date string
+     * @param inputDateFormat  Input date format (UTC date format)
+     * @param outputDateFormat Output date format (local date format)
      * @return value - local date and time from UTC
      */
     public static String convertDateTimeUTCToLocal(String inputDate, String inputDateFormat, String outputDateFormat) {
@@ -84,9 +84,9 @@ public class DateTimeHelper {
     /**
      * Convert Date format
      *
-     * @param dateTime      - Date and time as a string
-     * @param inputPattern  - Input date format
-     * @param outputPattern - Output date format
+     * @param dateTime      Date and time as a string
+     * @param inputPattern  Input date format
+     * @param outputPattern Output date format
      * @return value - formatted date
      */
     public static String changeDateFormat(String dateTime, String inputPattern, String outputPattern) {
@@ -107,8 +107,8 @@ public class DateTimeHelper {
     /**
      * Convert millisecond date
      *
-     * @param milliSeconds - Millisecond in long
-     * @param dateFormat   - Date format
+     * @param milliSeconds Millisecond in long
+     * @param dateFormat   Date format
      * @return value - date from millisecond with specific pattern
      */
     public static String changeMilliSecondToDateFormat(long milliSeconds, String dateFormat) {

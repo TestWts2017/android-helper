@@ -16,10 +16,10 @@ public class MapLocationHelper {
     /**
      * Open View to show latitude and longitude
      *
-     * @param context   - Context to launch Map
-     * @param latitude  - Latitude as a double
-     * @param longitude - Longitude as a double
-     * @param address   - Address of location
+     * @param context   Context to launch Map
+     * @param latitude  Latitude as a double
+     * @param longitude Longitude as a double
+     * @param address   Address of location
      */
     public static void openMapLocation(Context context, double latitude, double longitude, String address) {
         String uriBegin = "geo:" + latitude + "," + longitude;
