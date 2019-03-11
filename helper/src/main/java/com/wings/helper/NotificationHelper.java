@@ -69,7 +69,7 @@ public class NotificationHelper {
             Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             notificationBuilder.setSound(defaultSoundUri);
         }
-        
+
         NotificationManager notificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -88,6 +88,21 @@ public class NotificationHelper {
         }
     }
 
+
+    /**
+     * Create and Show Custom Notification
+     *
+     * @param activity             to be open while on click
+     * @param context              context of current class
+     * @param bundle               pass data through intent - this can be null
+     * @param remoteView           remote view (custom view)
+     * @param channelId            channel id for above oreo devices
+     * @param channelTitle         channel title for above oreo devices
+     * @param smallIcon            notification small icon image
+     * @param isStickyNotification allow or disallow to remove notification while swipe on it
+     * @param isSoundEnable        allow or disallow sound while notification appear
+     * @param notificationId       notification id (should be unique)
+     */
 
     public void sendCustomNotification(Activity activity, Context context, Bundle bundle,
                                        RemoteViews remoteView, String channelId,
