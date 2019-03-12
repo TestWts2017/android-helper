@@ -150,7 +150,6 @@ public class AlarmHelper {
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 ids.add(jsonArray.getInt(i));
-//                Log.v("AlarmID", String.valueOf(jsonArray2.getInt(i)));
             }
 
         } catch (Exception e) {
@@ -170,7 +169,6 @@ public class AlarmHelper {
         JSONArray jsonArray = new JSONArray();
         for (Integer idAlarm : listIds) {
             jsonArray.put(idAlarm);
-//            Log.v("AlarmID", String.valueOf(idAlarm));
         }
         SharedPreferenceHelper sharedPreferenceHelper = SharedPreferenceHelper.with(context, TAG_ALARM,
                 Context.MODE_PRIVATE);
