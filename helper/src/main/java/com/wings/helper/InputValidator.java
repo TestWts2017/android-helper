@@ -426,7 +426,7 @@ public class InputValidator {
     }
 
     /**
-     * Build slug from string title like "The beautiful day in 1992" turns "the-beautiful-day-in-2019"
+     * Build slug from string title like "The beautiful day in 2019" turns "the-beautiful-day-in-2019"
      *
      * @param title article title
      * @return slug string
