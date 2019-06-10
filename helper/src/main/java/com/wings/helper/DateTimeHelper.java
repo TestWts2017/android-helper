@@ -1,5 +1,6 @@
 package com.wings.helper;
 
+import android.annotation.SuppressLint;
 import android.text.format.DateFormat;
 
 import java.text.ParseException;
@@ -13,7 +14,7 @@ import java.util.TimeZone;
  *
  * @author NikunjD
  * Created on February 13, 2019
- * Modified on February 14, 2019
+ * Modified on June 10, 2019
  */
 public class DateTimeHelper {
 
@@ -80,6 +81,53 @@ public class DateTimeHelper {
         }
         return localDate;
     }
+
+
+    /**
+     * Convert date and time from one timezone to other timezone
+     * for ex. if you want to convert local timezone to UTC timezone then
+     * inputTimeZone should be - TimeZone.getDefault()
+     * outputTimeZone should be - TimeZone.getTimeZone("UTC")
+     *
+     *
+     * @param ourDate Input date string
+     * @param inputDateFormat Input date format
+     * @param outputDateFormat Output date format
+     * @param inputTimeZone Input date timezone
+     * @param outputTimeZone Output date timezone
+     * @return value - date and time as per output timezone
+     */
+    @SuppressLint("SimpleDateFormat")
+    public static String convertDateTimeUsingTimeZone
+            (String ourDate, String inputDateFormat, String outputDateFormat, TimeZone inputTimeZone,
+             TimeZone outputTimeZone) {
+
+        String outputDateFormatWithTimeZone = "";
+        Date parseInputDate = null;
+        SimpleDateFormat formatter;
+        SimpleDateFormat parser;
+
+        parser = new SimpleDateFormat(inputDateFormat);
+        parser.setTimeZone(inputTimeZone);
+        try {
+            parseInputDate = parser.parse(ourDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        formatter = new SimpleDateFormat(outputDateFormat);
+        formatter.setTimeZone(inputTimeZone);
+
+        formatter.setTimeZone(outputTimeZone);
+        if (parseInputDate != null) {
+            outputDateFormatWithTimeZone = formatter.format(parseInputDate);
+        }
+
+        return outputDateFormatWithTimeZone;
+    }
+
+
+
 
     /**
      * Convert Date format

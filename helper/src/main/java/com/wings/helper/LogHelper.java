@@ -8,12 +8,12 @@ import android.util.Log;
  *
  * @author NikunjD
  * Created on March 11, 2019
- * Modified on March 11, 2019
+ * Modified on June 10, 2019
  */
 public class LogHelper {
 
-    public static boolean logEnabled = false;
-    public static final String TAG = "LogHelper";
+    private static boolean logEnabled = false;
+    private static final String TAG = "LogHelper";
 
     /**
      * Get current log status
