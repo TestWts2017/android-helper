@@ -10,7 +10,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 import android.widget.RemoteViews;
 
 /**
@@ -18,7 +18,7 @@ import android.widget.RemoteViews;
  *
  * @author NikunjD
  * Created on March 11, 2019
- * Modified on March 11, 2019
+ * Modified on June 11, 2019
  */
 
 public class NotificationHelper {

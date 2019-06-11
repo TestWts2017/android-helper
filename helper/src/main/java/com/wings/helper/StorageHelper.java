@@ -34,7 +34,7 @@ import javax.crypto.Cipher;
  * Ref. @link https://github.com/sromku/android-storage/blob/master/storage/src/main/java/com/snatik/storage/Storage.java
  * @author NikunjD
  * Created on June 10, 2019
- * Modified on June 10, 2019
+ * Modified on June 11, 2019
  */
 public class StorageHelper {
 
@@ -42,6 +42,10 @@ public class StorageHelper {
     private EncryptConfiguration mConfiguration;
     private final Context mContext;
 
+    /**
+     * Storage Helper - Before use this class methods check for storage permissions
+     * @param context context
+     */
     public StorageHelper(Context context) {
         mContext = context;
     }

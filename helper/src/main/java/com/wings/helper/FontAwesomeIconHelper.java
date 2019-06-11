@@ -6,14 +6,16 @@ import android.graphics.Typeface;
 import android.util.TypedValue;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatTextView;
+
 /**
  * Purpose: Set Font Awesome Icons to TextView
  *
  * @author NikunjD
  * Created on February 18, 2019
- * Modified on February 18, 2019
+ * Modified on June 11, 2019
  */
-public class FontAwesomeIconHelper extends android.support.v7.widget.AppCompatTextView {
+public class FontAwesomeIconHelper extends AppCompatTextView {
     private Context context;
     private static final String FONT_AWESOME_TTF_FILE_PATH = "fonts/font_awesome-font-v5.3.1.1.ttf";
 
