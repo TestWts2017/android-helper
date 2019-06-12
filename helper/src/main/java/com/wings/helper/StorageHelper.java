@@ -2,10 +2,14 @@ package com.wings.helper;
 
 
 import android.content.Context;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StatFs;
+import android.provider.MediaStore;
+import android.webkit.MimeTypeMap;
 
 import com.wings.utils.EncryptConfiguration;
 import com.wings.utils.ImmutablePair;
@@ -32,6 +36,7 @@ import javax.crypto.Cipher;
 /**
  * Purpose: Task for storage
  * Ref. @link https://github.com/sromku/android-storage/blob/master/storage/src/main/java/com/snatik/storage/Storage.java
+ *
  * @author NikunjD
  * Created on June 10, 2019
  * Modified on June 11, 2019
@@ -44,6 +49,7 @@ public class StorageHelper {
 
     /**
      * Storage Helper - Before use this class methods check for storage permissions
+     *
      * @param context context
      */
     public StorageHelper(Context context) {
@@ -641,6 +647,76 @@ public class StorageHelper {
             } catch (IOException e) {
             }
         }
+    }
+
+
+    /**
+     * Get actual path from URI
+     * This is for ***onActivityResult*** URI only.
+     *
+     * @param context    context
+     * @param contentUri image uri
+     * @return path of image uri
+     */
+    public static String getRealStoragePathFromURI(Context context, Uri contentUri) {
+        Cursor cursor = null;
+        try {
+            String[] proj = {MediaStore.Images.Media.DATA};
+            cursor = context.getContentResolver().query(contentUri, proj, null, null, null);
+            if (cursor != null) {
+                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                cursor.moveToFirst();
+                return cursor.getString(column_index);
+            } else {
+                return "";
+            }
+        } catch (Exception e) {
+            LogHelper.w(TAG, "getRealPathFromURI Exception : " + e.toString());
+            return "";
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+    }
+
+
+    /**
+     * Gets the extension of a file name, like ".png" or ".jpg".
+     *
+     * @param uri file uri
+     * @return Extension including the dot("."); "" if there is no extension;
+     * null if uri was null.
+     */
+    public static String getExtension(String uri) {
+        if (uri == null) {
+            return null;
+        }
+
+        int dot = uri.lastIndexOf(".");
+        if (dot >= 0) {
+            return uri.substring(dot);
+        } else {
+            // No extension.
+            return "";
+        }
+    }
+
+
+    /**
+     * Get mime type of file
+     *
+     * @param file file
+     * @return The MIME type for the given file.
+     */
+    public static String getMimeType(File file) {
+
+        String extension = getExtension(file.getName());
+
+        if (extension.length() > 0)
+            return MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension.substring(1));
+
+        return "application/octet-stream";
     }
 
 }
