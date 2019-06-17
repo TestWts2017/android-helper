@@ -1,6 +1,6 @@
 package com.wings.helper;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 
@@ -9,26 +9,40 @@ import android.net.Uri;
  *
  * @author NikunjD
  * Created on February 13, 2019
- * Modified on February 14, 2019
+ * Modified on June 13, 2019
  */
 public class MapLocationHelper {
 
     /**
-     * Open View to show latitude and longitude
+     * Open map location externally using latitude and longitude
      *
-     * @param context   Context to launch Map
+     * @param activity  Activity to launch Map
      * @param latitude  Latitude as a double
      * @param longitude Longitude as a double
      * @param address   Address of location
      */
-    public static void openMapLocation(Context context, double latitude, double longitude, String address) {
+    public static void openMapLocation(Activity activity, double latitude, double longitude, String address) {
         String uriBegin = "geo:" + latitude + "," + longitude;
         String query = latitude + "," + longitude + "(" + address + ")";
         String encodedQuery = Uri.encode(query);
         String uriString = uriBegin + "?q=" + encodedQuery + "&z=16";
         Uri uri = Uri.parse(uriString);
         Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri);
-        context.startActivity(intent);
+        activity.startActivity(intent);
+    }
+
+
+    /**
+     * Open map location externally using location address
+     *
+     * @param activity Activity to launch Map
+     * @param address  address of location
+     */
+    public static void openMapLocation(Activity activity, String address) {
+        String map = "http://maps.google.co.in/maps?q=" + address;
+        Uri uri = Uri.parse(map);
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+        activity.startActivity(intent);
     }
 
 }
