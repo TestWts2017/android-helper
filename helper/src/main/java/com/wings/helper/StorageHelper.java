@@ -4,6 +4,7 @@ package com.wings.helper;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -43,6 +44,9 @@ import javax.crypto.Cipher;
  */
 public class StorageHelper {
 
+    public static final String DURATION_HOURS = "hr";
+    public static final String DURATION_MINUTES = "min";
+    public static final String DURATION_SECONDS = "sec";
     private static final String TAG = "StorageHelper";
     private EncryptConfiguration mConfiguration;
     private final Context mContext;
@@ -392,7 +396,7 @@ public class StorageHelper {
      * @param unit SizeUnit.B, SizeUnit.KB, SizeUnit.MB, SizeUnit.GB, SizeUnit.TB
      * @return file size
      */
-    public double getSize(File file, SizeUnit unit) {
+    public double getFileSize(File file, SizeUnit unit) {
         long length = file.length();
         return (double) length / (double) unit.inBytes();
     }
@@ -717,6 +721,68 @@ public class StorageHelper {
             return MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension.substring(1));
 
         return "application/octet-stream";
+    }
+
+
+    /**
+     * Get File Duration
+     *
+     * @param context
+     * @param filePath
+     * @return file duration in hour, min and sec
+     */
+    public static String retrieveFileDuration(Context context, String filePath) {
+
+        StorageHelper helper = new StorageHelper(context);
+        if (helper.isFileExist(filePath)) {
+            MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+            retriever.setDataSource(context, Uri.fromFile(new File(filePath)));
+            String time = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+            long timeInMillisec = Long.parseLong(time);
+
+            retriever.release();
+
+            /*convert millis to appropriate time*/
+            return milliSecondsToTimer(timeInMillisec);
+        }
+        return "";
+    }
+
+    public static String milliSecondsToTimer(long milliseconds) {
+
+        String finalTimerString = "", hourString = "", minuteString = "", secondsString = "";
+
+        //Convert total duration into time
+        int hours = (int) (milliseconds / (1000 * 60 * 60));
+        int minutes = (int) (milliseconds % (1000 * 60 * 60)) / (1000 * 60);
+        int seconds = (int) ((milliseconds % (1000 * 60 * 60)) % (1000 * 60) / 1000);
+        // Add hours if there
+        if (hours != 0) {
+            if (hours < 10) {
+                hourString = "0" + hours + DURATION_HOURS + ":";
+            } else {
+                hourString = hours + DURATION_HOURS + ":";
+            }
+        }
+
+        if (minutes != 0) {
+            if (minutes < 10) {
+                minuteString = "0" + minutes + DURATION_MINUTES + ":";
+            } else {
+                minuteString = minutes + DURATION_MINUTES + ":";
+            }
+        }
+
+        if (seconds < 10) {
+            secondsString = "0" + seconds + DURATION_SECONDS;
+        } else {
+            secondsString = "" + seconds + DURATION_SECONDS;
+        }
+
+        finalTimerString = hourString + minuteString + secondsString;
+
+        // return timer string
+        return finalTimerString;
     }
 
 }
