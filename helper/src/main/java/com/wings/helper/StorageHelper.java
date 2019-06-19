@@ -29,6 +29,7 @@ import java.io.OutputStream;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -725,14 +726,14 @@ public class StorageHelper {
 
 
     /**
-     * Get File Duration
+     * Get File Duration from local files
+     * Supported formats (audio and video)
      *
-     * @param context
-     * @param filePath
+     * @param context  context
+     * @param filePath local file path
      * @return file duration in hour, min and sec
      */
-    public static String retrieveFileDuration(Context context, String filePath) {
-
+    public static String retrieveLocalFileDuration(Context context, String filePath) {
         StorageHelper helper = new StorageHelper(context);
         if (helper.isFileExist(filePath)) {
             MediaMetadataRetriever retriever = new MediaMetadataRetriever();
@@ -747,6 +748,36 @@ public class StorageHelper {
         }
         return "";
     }
+
+    /**
+     * Get file duration from live url
+     * Supported protocols: file, http, https, mms, mmsh and rtmp
+     * Supported formats (audio and video): aac, acc+, avi, flac, mp2, mp3, mp4, ogg, 3gp
+     *
+     * @param liveUrl live url
+     * @return file duration in hour, min and sec
+     */
+    public static String retrieveOnlineFileDuration(String liveUrl) {
+        long mTimeInMilliseconds = 0;
+        try {
+            MediaMetadataRetriever mFFmpegMediaMetadataRetriever = new MediaMetadataRetriever();
+            mFFmpegMediaMetadataRetriever.setDataSource(
+                    liveUrl,
+                    new HashMap<String, String>());
+            String mVideoDuration = mFFmpegMediaMetadataRetriever
+                    .extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+            mTimeInMilliseconds = Long.parseLong(mVideoDuration);
+
+            if (mTimeInMilliseconds != 0) {
+                return milliSecondsToTimer(mTimeInMilliseconds);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
+        }
+        return "";
+    }
+
 
     public static String milliSecondsToTimer(long milliseconds) {
 
