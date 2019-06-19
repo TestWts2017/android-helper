@@ -1,5 +1,13 @@
 package com.wings.model;
 
+
+/**
+ * Purpose: Model class for youtube video information
+ *
+ * @author NikunjD
+ * Created on June 18, 2019
+ * Modified on June 19, 2019
+ */
 public class YoutubeVideoInformation {
 
     private String id;

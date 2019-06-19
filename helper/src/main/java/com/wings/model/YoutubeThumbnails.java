@@ -1,5 +1,12 @@
 package com.wings.model;
 
+/**
+ * Purpose: Model class for youtube thumbnails
+ *
+ * @author NikunjD
+ * Created on June 18, 2019
+ * Modified on June 19, 2019
+ */
 public class YoutubeThumbnails {
     private String thumbnailUrl;
     private String thumbnailHeight;
